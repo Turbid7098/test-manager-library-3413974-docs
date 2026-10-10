@@ -4,14 +4,14 @@
 |---|---|---|---|---|---|---|
 | HU-01 | Iniciar sesión | Auth | `api`, `app` | Login HTTP/JWT contra PostgreSQL; interfaz React con errores, sesión temporal y logout probados | Token JWT o 401 | EN PROCESO |
 | HU-02 | Alta bibliotecarios | Auth/Users | `api` | Alta HTTP `201`, hash interno no serializado y `403` para librarian verificados | Usuario creado, HTTP 201 | EN PROCESO |
-| HU-03 | Gestionar libros | Catalog | `api`, `app` | API CRUD, autorización y flujo multipart/binario de portada probados; pantallas app pendientes | Libro en DB, cover subido | EN PROCESO |
-| HU-04 | Buscar libros | Catalog | `api`, `app` | Caso de uso con fake; rendimiento/API pendientes | Lista filtrada, <= 300ms | EN PROCESO |
-| HU-05 | Gestionar socios | Members | `api`, `app` | Crear/buscar/detalle HTTP y conteo de activos verificados; pantallas app pendientes | UUID creado, HTTP 201 | EN PROCESO |
-| HU-06 | Prestar libro | Loans | `api`, `app` | Endpoint HTTP transaccional probado; dos procesos: uno presta último ejemplar, el otro 409; pantallas app pendientes | Líneas descontadas, max 3 | EN PROCESO |
-| HU-07 | Devolver libro | Loans | `api`, `app` | Endpoint HTTP, reposición única y devolución duplicada `409` comprobados; pantallas app pendientes | `returned_at` seteado, +1 copia | EN PROCESO |
-| HU-08 | Ver préstamos | Loans | `api`, `app` | Filtro/listado HTTP y estados dinámicos verificados; pantallas app pendientes | Estados calculados correctos | EN PROCESO |
-| HU-09 | Libros vencidos | Loans | `api`, `app` | Consulta HTTP PostgreSQL, socio y días de retraso verificados; pantallas app pendientes | Lista de líneas ordenadas | EN PROCESO |
-| HU-10 | Reporte prestados | Reports | `api`, `app` | Agregación PostgreSQL HTTP probada por rango y sin datos de socios; pantalla app pendiente | Lista de libros más prestados | EN PROCESO |
+| HU-03 | Gestionar libros | Catalog | `api`, `app` | API CRUD, autorización y portada probadas; interfaz de alta/edición/baja implementada; flujo visual integral pendiente | Libro en DB, cover subido | EN PROCESO |
+| HU-04 | Buscar libros | Catalog | `api`, `app` | Caso de uso con fake; UI de búsqueda implementada; rendimiento/API pendientes | Lista filtrada, <= 300ms | EN PROCESO |
+| HU-05 | Gestionar socios | Members | `api`, `app` | Crear/buscar/detalle HTTP y conteo de activos verificados; UI de búsqueda/registro implementada | UUID creado, HTTP 201 | EN PROCESO |
+| HU-06 | Prestar libro | Loans | `api`, `app` | Endpoint transaccional y concurrencia probados; formulario UI permite hasta tres libros; flujo visual integral pendiente | Líneas descontadas, max 3 | EN PROCESO |
+| HU-07 | Devolver libro | Loans | `api`, `app` | Endpoint, reposición única y duplicado `409` comprobados; acción UI implementada; recorrido integral pendiente | `returned_at` seteado, +1 copia | EN PROCESO |
+| HU-08 | Ver préstamos | Loans | `api`, `app` | Filtro/listado y estados dinámicos verificados; vista UI implementada; recorrido integral pendiente | Estados calculados correctos | EN PROCESO |
+| HU-09 | Libros vencidos | Loans | `api`, `app` | Consulta PostgreSQL, socio y días de retraso verificados; vista y acción UI implementadas; recorrido integral pendiente | Lista de líneas ordenadas | EN PROCESO |
+| HU-10 | Reporte prestados | Reports | `api`, `app` | Agregación PostgreSQL por rango verificada; vista UI implementada y restringida a admin; recorrido integral pendiente | Lista de libros más prestados | EN PROCESO |
 | T-01 | Esqueleto API | Bootstrap | `api` | GET `/api/v1/health` en Compose | `{"status":"ok"}` | VERIFICADO |
 | T-02 | Migración inicial | Infra/DB | `api`, `infra` | `artisan migrate:status`, consultas PostgreSQL, seis tablas/categorías/FK/CHECK/índices/defaults | Esquema físico coincide | VERIFICADO |
 | T-03 | Dominio: Value Objects | Domain | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | ISBN/Quantity/DateRange invariants | VERIFICADO |
@@ -33,5 +33,5 @@
 | T-19 | Arch Tests | Testing | `api` | `tests/Architecture/ArchitectureRulesTest.php`: imports limitados a Domain/Application, adaptadores solo instanciados en composición; fixture negativo | Capas aisladas y composición única; 3 pruebas de arquitectura aprobadas | VERIFICADO |
 | T-20 | Docker Infra | Infra | `infra` | Compose aislado con volumen nuevo: PostgreSQL inicialmente sin tablas, API health `ok`, frontend HTTP 200; migraciones aplicadas después | API, frontend y DB arrancan; esquema vacío hasta migrar | VERIFICADO |
 | T-21 | Seed Tool | Tool | `tool`, `api` | `seed.mjs` autenticado por HTTP; evidencia real: 40 libros, 10 socios, 15 préstamos, 3 líneas vencidas y 15 filas de reporte | Datos demo creados solo por API; endpoint de vencidos los devuelve | VERIFICADO |
-| T-22 | Frontend App | App | `app` | Build TypeScript/Vite; login, error HTTP, dashboard responsive y logout comprobados | Flujo frontend completo con endpoints de negocio | EN PROCESO |
+| T-22 | Frontend App | App | `app` | Build TypeScript/Vite; login/dashboard/navegación y estado vacío de catálogo comprobados con mocks; ciclo completo con API real aún pendiente | Flujos de negocio y permisos validados desde la interfaz | EN PROCESO |
 | T-23 | Static Page | Page | `page` | Manual testing | Responsive | PENDIENTE |
