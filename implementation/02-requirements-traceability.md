@@ -23,7 +23,7 @@
 | T-09 | PU Lend | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Limites, vencidos, duplicados y disponibilidad | VERIFICADO |
 | T-10 | PU Return & Overdue | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Devolucion unica y orden de vencidos | VERIFICADO |
 | T-11 | PU Report | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Rango valido y valores congelados en el nucleo | VERIFICADO |
-| T-12 | Repos Persistencia (1) | Adapters | `api` | Integration tests | DB CRUD success | PENDIENTE |
+| T-12 | Repos Persistencia (1) | Adapters | `api` | `PostgresPersistenceAdaptersTest` contra PostgreSQL real; búsquedas, paginación, baja lógica y bindings | CRUD de libro/socio/usuario y categorías | VERIFICADO |
 | T-13 | Repos Persistencia (2) | Adapters | `api` | Integration tests | Concurrency success | PENDIENTE |
 | T-14 | Adaptador Seguridad | Adapters | `api` | `JwtAuthenticationTest`, `AuthLoginTest` y login HTTP con PostgreSQL | JWT HS256, hash seguro y validación Bearer | VERIFICADO |
 | T-15 | Adaptador Portadas | Adapters | `api` | Integration tests | Disk upload success | PENDIENTE |

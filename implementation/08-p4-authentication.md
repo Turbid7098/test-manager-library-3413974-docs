@@ -14,7 +14,7 @@
 
 ## Evidencia ejecutada
 
-- Suite completa: **23 pruebas, 208 aserciones, todas aprobadas**. Incluye `JwtAuthenticationTest`, `AuthLoginTest`, `ServiceBindingsTest` y `LendBooksServiceTest`.
+- Suite completa al cierre de autenticación: **23 pruebas, 208 aserciones, todas aprobadas**. Incluye `JwtAuthenticationTest`, `AuthLoginTest`, `ServiceBindingsTest` y `LendBooksServiceTest`. Tras T-12, el total es 26 pruebas y 250 aserciones; el nuevo bloque se documenta en [`10-t12-persistence.md`](./10-t12-persistence.md).
 - Laravel Pint sobre **17 archivos PHP relacionados**: aprobado.
 - `docker compose config --quiet`: aprobado.
 - `php artisan migrate:status`: migración `2026_10_10_000000_create_library_schema` aplicada en PostgreSQL.
@@ -28,7 +28,7 @@ Laravel `artisan serve` filtra variables de entorno que no estén en su lista pe
 
 ## Pendiente
 
-- La interfaz React todavía no consume el login y no existe flujo UI completo.
+- La interfaz React ya consume el login y muestra un resumen inicial; los módulos de negocio siguen pendientes.
 - Las rutas y adaptadores de negocio restantes siguen pendientes; todavía no hay endpoints protegidos para validar autorización en un flujo HTTP de negocio. El middleware sí está cubierto unitariamente.
 - P2 permanece parcial hasta probar la infraestructura desde un volumen PostgreSQL vacío. No se eliminó el volumen persistente durante esta validación.
 - Continuar con los adaptadores PostgreSQL restantes y las rutas API de las historias HU-02 a HU-10; no inferir concurrencia correcta a partir de pruebas con fakes.
