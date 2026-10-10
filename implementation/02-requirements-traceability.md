@@ -30,7 +30,7 @@
 | T-16 | Adaptador HTTP | Adapters | `api` | Pruebas de contrato HTTP con PostgreSQL, roles, rutas, códigos, portada binaria y CORS; 35 pruebas/426 aserciones en suite completa | Todas las rutas y permisos de `api-contract.md` verificados | VERIFICADO |
 | T-17 | Composición | Bootstrap | `api` | Verificador reproducible en una base PostgreSQL nueva: migración desde cero, cinco categorías, alta idempotente y login/route protegida por HTTP | Admin autenticable por JWT en base inicialmente vacía | VERIFICADO |
 | T-18 | DB CHECK Constraints | DB | `api` | Migración aditiva y pruebas negativas PostgreSQL (SQLSTATE `23514`) para `ck_book_total_positive` y `ck_user_role`; dominio rechaza datos inválidos | Invariantes de copias y rol aplicadas por dominio y motor | VERIFICADO |
-| T-19 | Arch Tests | Testing | `api` | Pendiente de T-19: contratos automatizados de dependencias y composición | Capas aisladas y composición única | PENDIENTE |
+| T-19 | Arch Tests | Testing | `api` | `tests/Architecture/ArchitectureRulesTest.php`: imports limitados a Domain/Application, adaptadores solo instanciados en composición; fixture negativo | Capas aisladas y composición única; 3 pruebas de arquitectura aprobadas | VERIFICADO |
 | T-20 | Docker Infra | Infra | `infra` | Compose/API health/DB health verificados; arranque desde volumen limpio pendiente | Containers running, motor inicialmente vacío | EN PROCESO |
 | T-21 | Seed Tool | Tool | `tool` | Script execution | DB populated, 3 overdue | PENDIENTE |
 | T-22 | Frontend App | App | `app` | Build TypeScript/Vite; login, error HTTP, dashboard responsive y logout comprobados | Flujo frontend completo con endpoints de negocio | EN PROCESO |

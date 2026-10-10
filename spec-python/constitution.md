@@ -10,19 +10,19 @@ nadie puede comprobar es una intención. Un cambio que viole un artículo se rec
 `src/library/domain/` no importa ningún otro módulo del proyecto ni librerías de terceros: solo biblioteca estándar (`dataclass(frozen=True)`, `datetime`, `typing`); ni SQLAlchemy, ni FastAPI, ni pydantic.
 
 **Por qué:** es lo único que permite probar las invariantes sin base de datos, sin servidor y sin contenedor, y cambiar de ORM sin tocar reglas.
-**Verificación:** un contrato de `import-linter` y un test en `tests/architecture/` prohíbe que el dominio dependa de `application`, `adapters` o `bootstrap`.
+**Verificación:** en la implementación PHP, `tests/Architecture/ArchitectureRulesTest.php` limita los imports del dominio a su propio namespace y a clases globales de PHP; un fixture confirma que una dependencia prohibida hace fallar el contrato.
 
 ## Artículo II — El núcleo declara sus puertos; el mundo los implementa
 
 La capa de aplicación solo conoce el dominio. Todo lo que necesita del exterior (repositorios, reloj, hash de claves, almacenamiento de
 portadas, generación de tokens) lo expresa como un **puerto que ella misma define**. Ningún tipo de framework o de ORM aparece en la firma de un puerto.
 
-**Verificación:** un contrato de `import-linter` y un test en `tests/architecture/` impide que `application` importe `adapters`. Los tests de aplicación corren con fakes y sin referenciar `adapters`.
+**Verificación:** en la implementación PHP, `tests/Architecture/ArchitectureRulesTest.php` permite a aplicación importar solo `Application` y `Domain`. Los tests de aplicación corren con fakes y sin referenciar `adapters`.
 
 ## Artículo III — Un único punto de composición
 
 Un solo módulo (`src/library/bootstrap/composition/port_bindings.py`) es donde un puerto se encuentra con su adaptador. Fuera de él no se instancia infraestructura.
-**Verificación:** ninguna instanciación de una clase de `adapters` fuera de ese módulo; se comprueba con un test de arquitectura.
+**Verificación:** ninguna instanciación de una clase de `adapters` fuera de `AppServiceProvider`; se comprueba con `tests/Architecture/ArchitectureRulesTest.php`.
 
 ## Artículo IV — SOLID no es decorativo
 
