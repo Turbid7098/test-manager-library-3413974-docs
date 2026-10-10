@@ -41,12 +41,12 @@ Se confirmaron los seis clones locales y que sus `origin` apuntan a los forks de
 
 | Repositorio | Estado actualizado tras completar el primer bloque de P4 |
 |---|---|
-| `api` | Laravel instalado; login HTTP/JWT y adaptadores PostgreSQL de libros/socios/usuarios/categorías/préstamos verificados; rutas HTTP de negocio pendientes. |
-| `app` | React + TypeScript: login conectado a la API y panel inicial responsive verificados; faltan módulos y flujos de negocio. |
-| `docs` | Especificaciones Python/.NET originales y documentos de adaptacion; se actualizo la trazabilidad P3. |
-| `infra` | Compose para PostgreSQL 16, API y Vite verificado. Secretos en `.env` local ignorado; falta probar un arranque con volumen PostgreSQL limpio. |
-| `page` | Solo README; falta el sitio estatico. |
-| `tool` | Solo README; falta el sembrador por API. |
+| `api` | Laravel/PostgreSQL; autenticación y rutas de negocio verificadas; T-12–T-21 completos. Suite: 43 pruebas, 613 aserciones. |
+| `app` | React + TypeScript: login conectado y panel inicial responsive; pantallas y flujos de negocio pendientes en T-22. |
+| `docs` | Especificaciones y evidencia de T-12–T-21 actualizadas. |
+| `infra` | Compose para PostgreSQL 16, API y Vite; arranque con volumen aislado vacío verificado. El volumen de desarrollo se conservó. |
+| `page` | README únicamente; sitio público de presentación pendiente en T-23. |
+| `tool` | Sembrador Node 22 por API ejecutado; 40 libros, 10 socios, 15 préstamos y 3 vencidos. |
 
 No se modificaron `app`, `infra`, `page` ni `tool`, pues esos cambios no pertenecen a P3. La auditoria de archivos existente en P0 contiene afirmaciones que deben revisarse contra este inventario; no se alteraron aqui las especificaciones originales.
 
@@ -54,4 +54,4 @@ No se modificaron `app`, `infra`, `page` ni `tool`, pues esos cambios no pertene
 
 P2 sigue parcial: Compose, health, esquema, hash del administrador y login HTTP están verificados. T-17 cubre la composición de autenticación y T-20 confirmó un arranque desde volumen aislado inicialmente vacío, con migraciones explícitas después.
 
-El bloque inicial de P4 (autenticación JWT y composición) está verificado en [`08-p4-authentication.md`](./08-p4-authentication.md). T-12 (persistencia PostgreSQL de libros, socios, usuarios y categorías) se completó en [`10-t12-persistence.md`](./10-t12-persistence.md), T-13 (préstamos y concurrencia real) en [`11-t13-loans-concurrency.md`](./11-t13-loans-concurrency.md), T-15 (almacenamiento y validación de portadas) en [`12-t15-cover-storage.md`](./12-t15-cover-storage.md), T-16 (rutas HTTP, contrato, roles y CORS) en [`13-t16-http-api.md`](./13-t16-http-api.md), T-17 (migración/admin desde base vacía) en [`14-t17-empty-database-startup.md`](./14-t17-empty-database-startup.md), T-18 (restricciones `CHECK`) en [`15-t18-database-checks.md`](./15-t18-database-checks.md), T-19 (contratos automatizados de arquitectura) en [`16-t19-architecture-tests.md`](./16-t19-architecture-tests.md), y T-20 (arranque Compose con volumen aislado y vacío) en [`17-t20-isolated-compose.md`](./17-t20-isolated-compose.md). El siguiente bloque es T-21: sembrar datos de demostración por la API.
+El bloque inicial de P4 (autenticación JWT y composición) está verificado en [`08-p4-authentication.md`](./08-p4-authentication.md). T-12 (persistencia PostgreSQL de libros, socios, usuarios y categorías) se completó en [`10-t12-persistence.md`](./10-t12-persistence.md), T-13 (préstamos y concurrencia real) en [`11-t13-loans-concurrency.md`](./11-t13-loans-concurrency.md), T-15 (almacenamiento y validación de portadas) en [`12-t15-cover-storage.md`](./12-t15-cover-storage.md), T-16 (rutas HTTP, contrato, roles y CORS) en [`13-t16-http-api.md`](./13-t16-http-api.md), T-17 (migración/admin desde base vacía) en [`14-t17-empty-database-startup.md`](./14-t17-empty-database-startup.md), T-18 (restricciones `CHECK`) en [`15-t18-database-checks.md`](./15-t18-database-checks.md), T-19 (contratos automatizados de arquitectura) en [`16-t19-architecture-tests.md`](./16-t19-architecture-tests.md), T-20 (arranque Compose con volumen aislado y vacío) en [`17-t20-isolated-compose.md`](./17-t20-isolated-compose.md), y T-21 (sembrador HTTP de demostración) en [`18-t21-api-seed.md`](./18-t21-api-seed.md). La compuerta backend T-12–T-21 queda cerrada; sigue T-22 para completar las pantallas y flujos de negocio en React.

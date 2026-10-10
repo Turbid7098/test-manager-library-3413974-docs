@@ -7,7 +7,7 @@
 
 ## B. Datos Vencidos (Test Clock)
 **Problema:** T-21 exige generar líneas vencidas mediante la API, pero las fechas de vencimiento están controladas por el Dominio y no pueden forzarse por parámetros HTTP.
-**Decisión (ADR-B):** Implementaremos un `Clock` Port en la capa de aplicación. En producción, usará `SystemClock`. Para ambientes de pruebas (`APP_ENV=local` o equivalente), usaremos un `TestClock` que tomará la "fecha actual" proveniente de un Header HTTP específico (ej. `X-Test-Time`). La API validará que esta inyección de tiempo solo funcione en un ambiente de desarrollo o semilla, preservando la inmutabilidad de fechas en producción real.
+**Decisión (ADR-B), implementada en T-21:** el adaptador `LaravelClock` acepta `X-Test-Time` solo en `local`/`testing` y después de la autenticación JWT. La fecha debe ser ISO 8601 válida; entradas inválidas dan 422. El clock es scoped por solicitud, y la emisión/verificación del JWT ocurre antes de establecer el usuario autenticado, por lo que siempre usa el tiempo real. Producción ignora el encabezado y usa el reloj del sistema.
 
 ## C. Endpoints Faltantes: Portadas
 **Problema:** `api-contract.md` menciona `GET /books/{id}/cover` en descripciones pero omite el endpoint en su lista tabulada.

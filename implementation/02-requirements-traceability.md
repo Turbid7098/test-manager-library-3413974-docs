@@ -32,6 +32,6 @@
 | T-18 | DB CHECK Constraints | DB | `api` | Migración aditiva y pruebas negativas PostgreSQL (SQLSTATE `23514`) para `ck_book_total_positive` y `ck_user_role`; dominio rechaza datos inválidos | Invariantes de copias y rol aplicadas por dominio y motor | VERIFICADO |
 | T-19 | Arch Tests | Testing | `api` | `tests/Architecture/ArchitectureRulesTest.php`: imports limitados a Domain/Application, adaptadores solo instanciados en composición; fixture negativo | Capas aisladas y composición única; 3 pruebas de arquitectura aprobadas | VERIFICADO |
 | T-20 | Docker Infra | Infra | `infra` | Compose aislado con volumen nuevo: PostgreSQL inicialmente sin tablas, API health `ok`, frontend HTTP 200; migraciones aplicadas después | API, frontend y DB arrancan; esquema vacío hasta migrar | VERIFICADO |
-| T-21 | Seed Tool | Tool | `tool` | Script execution | DB populated, 3 overdue | PENDIENTE |
+| T-21 | Seed Tool | Tool | `tool`, `api` | `seed.mjs` autenticado por HTTP; evidencia real: 40 libros, 10 socios, 15 préstamos, 3 líneas vencidas y 15 filas de reporte | Datos demo creados solo por API; endpoint de vencidos los devuelve | VERIFICADO |
 | T-22 | Frontend App | App | `app` | Build TypeScript/Vite; login, error HTTP, dashboard responsive y logout comprobados | Flujo frontend completo con endpoints de negocio | EN PROCESO |
 | T-23 | Static Page | Page | `page` | Manual testing | Responsive | PENDIENTE |
