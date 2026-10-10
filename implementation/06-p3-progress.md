@@ -41,17 +41,17 @@ Se confirmaron los seis clones locales y que sus `origin` apuntan a los forks de
 
 | Repositorio | Estado observado al continuar |
 |---|---|
-| `api` | Laravel instalado; migracion inicial, health y trabajo P3 local. Persistencia, rutas de negocio y composicion aun no verificadas. |
+| `api` | Laravel instalado; migracion inicial y health verificados en PostgreSQL/Compose. Aprovisionamiento del admin probado; login HTTP y rutas de negocio aun pendientes. |
 | `app` | Plantilla Vite/TypeScript; aun no es la aplicacion React requerida. |
 | `docs` | Especificaciones Python/.NET originales y documentos de adaptacion; se actualizo la trazabilidad P3. |
-| `infra` | Compose para PostgreSQL 16, API y frontend. No se ejecuto la integracion; el archivo contiene credenciales de demostracion definidas en claro, que deben parametrizarse antes de su uso/publicacion conforme a la regla de secretos. |
+| `infra` | Compose para PostgreSQL 16, API y Vite verificado. Secretos movidos a `.env` local ignorado; falta probar un arranque con volumen PostgreSQL limpio. |
 | `page` | Solo README; falta el sitio estatico. |
 | `tool` | Solo README; falta el sembrador por API. |
 
 No se modificaron `app`, `infra`, `page` ni `tool`, pues esos cambios no pertenecen a P3. La auditoria de archivos existente en P0 contiene afirmaciones que deben revisarse contra este inventario; no se alteraron aqui las especificaciones originales.
 
-## Siguiente paso
+## Siguiente compuerta
 
-Antes de P4 se debe cerrar la compuerta de P2: ejecutar Compose, migraciones PostgreSQL, health y login del administrador inicial con credenciales externas al repositorio. La migracion y Compose existen, pero esa evidencia no se verifico en esta continuacion; ademas, Compose contiene credenciales de demostracion en claro que deben parametrizarse.
+P2 esta verificada para Compose, health, esquema y hash del administrador, pero no se debe dar por cerrada: el endpoint HTTP de login todavia no existe y falta verificar un arranque desde un volumen limpio. T-17 permanece `EN PROCESO` y T-20 permanece `EN PROCESO`.
 
-Despues de verificar P2, continuar P4 con adaptadores de persistencia, reloj y seguridad; composicion; rutas HTTP y pruebas transaccionales/concurrentes contra PostgreSQL.
+El login HTTP forma parte de P4; por tanto, continuar con el primer bloque de P4 (adaptador de autenticacion y composicion) es necesario para validar la ultima evidencia de P2. Mantener las demas rutas P4 y la concurrencia como pendientes hasta probarlas.
