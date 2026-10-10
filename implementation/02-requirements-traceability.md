@@ -28,7 +28,7 @@
 | T-14 | Adaptador Seguridad | Adapters | `api` | `JwtAuthenticationTest`, `AuthLoginTest` y login HTTP con PostgreSQL | JWT HS256, hash seguro y validación Bearer | VERIFICADO |
 | T-15 | Adaptador Portadas | Adapters | `api` | PostgreSQL + disco local; PNG válido de 2 MiB, 3 MiB rechazado, MIME verificado, reemplazo y borrado | Clave opaca y contenido recuperable; sin portada `cover_key` nulo | VERIFICADO |
 | T-16 | Adaptador HTTP | Adapters | `api` | Pruebas de contrato HTTP con PostgreSQL, roles, rutas, códigos, portada binaria y CORS; 35 pruebas/426 aserciones en suite completa | Todas las rutas y permisos de `api-contract.md` verificados | VERIFICADO |
-| T-17 | Composición | Bootstrap | `api` | Migración, aprovisionamiento idempotente y login HTTP contra PostgreSQL | Admin autenticable por JWT | VERIFICADO |
+| T-17 | Composición | Bootstrap | `api` | Verificador reproducible en una base PostgreSQL nueva: migración desde cero, cinco categorías, alta idempotente y login/route protegida por HTTP | Admin autenticable por JWT en base inicialmente vacía | VERIFICADO |
 | T-18 | DB CHECK Constraints | DB | `api` | SQL Error test | Domain rules in DB | PENDIENTE |
 | T-19 | Arch Tests | Testing | `api` | Dependency test | Architecture respected | PENDIENTE |
 | T-20 | Docker Infra | Infra | `infra` | Compose/API health/DB health verificados; arranque desde volumen limpio pendiente | Containers running, motor inicialmente vacío | EN PROCESO |
