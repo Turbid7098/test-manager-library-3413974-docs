@@ -8,6 +8,8 @@ El repositorio `app` conecta React + TypeScript con los endpoints de negocio de 
 
 - Resumen de catálogo, socios, préstamos activos y vencidos.
 - Catálogo: búsqueda, alta, edición y baja lógica para administradores.
+- Administradores: alta de bibliotecarios con rol fijo `librarian`.
+- Catálogo: selección de portada al guardar y retirada de la portada actual desde la edición.
 - Socios: búsqueda y registro.
 - Préstamos: préstamo de hasta tres libros disponibles y devolución de ejemplares.
 - Seguimiento de líneas vencidas y reporte de títulos más prestados para administradores.
@@ -23,9 +25,10 @@ El cliente tipado maneja respuestas JSON y HTTP 204. El JWT se conserva en memor
 - Prueba HTTP autenticada contra la API y PostgreSQL: login admin; lectura de categorías, libros, socios, vencidos y reporte; creación de socio de prueba; préstamo de un ejemplar y devolución registrada. Se comprobó que la disponibilidad del libro volvió al valor inicial.
 - La devolución de prueba usó `X-Test-Time` posterior al préstamo, encabezado reservado al entorno local/testing; no se alteraron los préstamos vencidos existentes.
 - Build final de producción aprobado después de completar el dashboard.
+- Build TypeScript/Vite aprobado después de añadir los formularios de bibliotecarios y portadas.
 
 ## Cierre de T-22
 
 El recorrido de la interfaz y las operaciones autenticadas de la API se verificaron por separado; las respuestas del recorrido de UI son simuladas y la prueba HTTP es real contra PostgreSQL. Se verificaron los permisos de presentación por rol y responsive móvil. No se declara que la prueba del navegador haya escrito datos en la API real.
 
-T-22 está cerrado para el alcance de tareas del spec. Las historias HU-03 a HU-10 conservan su estado individual si otros criterios fuera del flujo T-22 siguen abiertos.
+Los formularios nuevos de alta de bibliotecario y gestión de portadas compilan, pero aún no tienen recorrido visual automatizado ni smoke HTTP específico documentado. Por eso T-22 y las historias HU-02/HU-03 permanecen en proceso hasta completar esa verificación; no se afirma que el proyecto esté al 100%.

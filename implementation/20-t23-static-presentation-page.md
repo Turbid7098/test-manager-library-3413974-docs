@@ -1,6 +1,6 @@
 # T-23 — Sitio público estático
 
-**Estado:** implementado, probado localmente y publicado en el fork `Turbid7098/test-manager-library-3413974-page`.
+**Estado:** implementado, probado localmente y publicado en el fork `Turbid7098/test-manager-library-3413974-page`; GitHub Pages responde en la URL pública.
 
 ## Implementación
 
@@ -18,6 +18,7 @@ La página incluye navegación adaptable con menú accesible en móvil, landmark
 
 ## Publicación
 
-Se creó el fork desde `code-sena/test-manager-library-3413974-page`, integrando su commit inicial con el historial local sin force-push. Sitio y README publicados en `main`, commit `7e05fc6`.
+Se creó el fork desde `code-sena/test-manager-library-3413974-page`, integrando su commit inicial con el historial local sin force-push. Sitio y README publicados en `main`, commit `7e05fc6`; la fuente de Pages está configurada en `main` y raíz (commit de configuración `a489e7e`).
 
-La publicación del código en GitHub está verificada. No se configuró GitHub Pages ni se afirma que exista una URL de despliegue web.
+El workflow nativo de GitHub Pages terminó correctamente (run `38085335810`) y la URL pública responde HTTP 200:
+https://turbid7098.github.io/test-manager-library-3413974-page/
