@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|---|
 | HU-01 | Iniciar sesión | Auth | `api`, `app` | Login HTTP/JWT en PostgreSQL; interfaz React con manejo de error y sesión verificada | Token JWT o 401 | EN PROCESO |
 | HU-02 | Alta bibliotecarios | Auth/Users | `api` | Caso de uso con fake; permisos HTTP pendientes | Usuario creado, HTTP 201 | EN PROCESO |
-| HU-03 | Gestionar libros | Catalog | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | Libro en DB, cover subido | EN PROCESO |
+| HU-03 | Gestionar libros | Catalog | `api`, `app` | Persistencia de portada JPG/PNG verificada; endpoints y flujo frontend pendientes | Libro en DB, cover subido | EN PROCESO |
 | HU-04 | Buscar libros | Catalog | `api`, `app` | Caso de uso con fake; rendimiento/API pendientes | Lista filtrada, <= 300ms | EN PROCESO |
 | HU-05 | Gestionar socios | Members | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | UUID creado, HTTP 201 | EN PROCESO |
 | HU-06 | Prestar libro | Loans | `api`, `app` | Caso de uso y transacción/concurrencia PostgreSQL verificados; endpoint HTTP pendiente | Líneas descontadas, max 3 | EN PROCESO |
@@ -26,7 +26,7 @@
 | T-12 | Repos Persistencia (1) | Adapters | `api` | `PostgresPersistenceAdaptersTest` contra PostgreSQL real; búsquedas, paginación, baja lógica y bindings | CRUD de libro/socio/usuario y categorías | VERIFICADO |
 | T-13 | Repos Persistencia (2) | Adapters | `api` | Integración PostgreSQL con dos procesos concurrentes; persistencia, devolución, vencidos, versión obsoleta y rollback | Un préstamo confirmado, conflicto `BOOK_NOT_AVAILABLE`, sin ejemplares ni préstamos parciales | VERIFICADO |
 | T-14 | Adaptador Seguridad | Adapters | `api` | `JwtAuthenticationTest`, `AuthLoginTest` y login HTTP con PostgreSQL | JWT HS256, hash seguro y validación Bearer | VERIFICADO |
-| T-15 | Adaptador Portadas | Adapters | `api` | Integration tests | Disk upload success | PENDIENTE |
+| T-15 | Adaptador Portadas | Adapters | `api` | PostgreSQL + disco local; PNG válido de 2 MiB, 3 MiB rechazado, MIME verificado, reemplazo y borrado | Clave opaca y contenido recuperable; sin portada `cover_key` nulo | VERIFICADO |
 | T-16 | Adaptador HTTP | Adapters | `api` | Feature tests y login HTTP verificados; endpoints de negocio pendientes | Contrato HTTP de autenticación | EN PROCESO |
 | T-17 | Composición | Bootstrap | `api` | Migración, aprovisionamiento idempotente y login HTTP contra PostgreSQL | Admin autenticable por JWT | VERIFICADO |
 | T-18 | DB CHECK Constraints | DB | `api` | SQL Error test | Domain rules in DB | PENDIENTE |
