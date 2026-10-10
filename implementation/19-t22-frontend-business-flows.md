@@ -18,12 +18,13 @@ El cliente tipado maneja respuestas JSON y HTTP 204. El JWT se conserva en memor
 
 - `npm run build`: TypeScript y Vite finalizaron correctamente.
 - La prueba visual previa verificó inicio de sesión simulado, dashboard y navegación por sus seis vistas.
-- En la validación actual, el catálogo mostró su estado vacío con respuestas HTTP simuladas.
-- Se contrastaron los payloads y rutas usadas por la interfaz con los controladores Laravel. Esto es una revisión de contrato, no evidencia de ejecución del recorrido completo.
-- El recorrido de alta, préstamo, devolución, vencidos y reporte contra la API real aún no se ha confirmado desde el navegador.
+- El usuario confirmó el acceso al dashboard local.
+- Prueba HTTP autenticada contra la API y PostgreSQL: login admin; lectura de categorías, libros, socios, vencidos y reporte; creación de socio de prueba; préstamo de un ejemplar y devolución registrada. Se comprobó que la disponibilidad del libro volvió al valor inicial.
+- La devolución de prueba usó `X-Test-Time` posterior al préstamo, encabezado reservado al entorno local/testing; no se alteraron los préstamos vencidos existentes.
+- Se contrastaron los payloads y rutas usados por la interfaz con los controladores Laravel. La sesión del usuario no estuvo disponible en el navegador de pruebas, así que no se afirma que se haya completado un recorrido automatizado de formularios en la UI.
 
 ## Cierre de T-22
 
-T-22 permanece en curso hasta validar los flujos de escritura y permisos con la API en ejecución y completar una comprobación responsive de las pantallas de negocio. No se marcan como terminadas las historias HU-03 a HU-10 solo por tener sus pantallas implementadas.
+T-22 permanece en curso hasta validar visualmente desde la UI los formularios de escritura, permisos por rol y responsive de las pantallas de negocio. No se marcan como terminadas las historias HU-03 a HU-10 solo por tener sus pantallas implementadas.
 
 Después de esa compuerta, el siguiente paso del plan es T-23: sitio público estático y responsive.
