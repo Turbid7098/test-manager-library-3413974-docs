@@ -73,6 +73,7 @@ Ninguna columna lleva `DEFAULT`: los valores los pone el dominio.
 | `available_copies` | `integer` | no | Entre 0 y `total_copies` |
 | `cover_key` | `varchar(512)` | **sí** | Clave opaca; nunca ruta ni bytes; nunca cadena vacía |
 | `deleted_at` | `timestamptz` | sí | Baja lógica. Nula = activo |
+| `version` | `bigint` | no | Testigo de concurrencia optimista; inicia en 0 y aumenta en cada escritura |
 
 **`member`**
 

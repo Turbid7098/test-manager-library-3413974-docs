@@ -41,7 +41,7 @@ Se confirmaron los seis clones locales y que sus `origin` apuntan a los forks de
 
 | Repositorio | Estado actualizado tras completar el primer bloque de P4 |
 |---|---|
-| `api` | Laravel instalado; login HTTP/JWT y adaptadores PostgreSQL de libros/socios/usuarios/categorías verificados; préstamo y rutas HTTP de negocio pendientes. |
+| `api` | Laravel instalado; login HTTP/JWT y adaptadores PostgreSQL de libros/socios/usuarios/categorías/préstamos verificados; rutas HTTP de negocio pendientes. |
 | `app` | React + TypeScript: login conectado a la API y panel inicial responsive verificados; faltan módulos y flujos de negocio. |
 | `docs` | Especificaciones Python/.NET originales y documentos de adaptacion; se actualizo la trazabilidad P3. |
 | `infra` | Compose para PostgreSQL 16, API y Vite verificado. Secretos en `.env` local ignorado; falta probar un arranque con volumen PostgreSQL limpio. |
@@ -54,4 +54,4 @@ No se modificaron `app`, `infra`, `page` ni `tool`, pues esos cambios no pertene
 
 P2 sigue parcial: Compose, health, esquema, hash del administrador y login HTTP están verificados; falta probar un arranque desde un volumen limpio. T-17 se verificó para la composición de autenticación; T-20 permanece `EN PROCESO`.
 
-El bloque inicial de P4 (autenticación JWT y composición) está verificado en [`08-p4-authentication.md`](./08-p4-authentication.md). T-12 (persistencia PostgreSQL de libros, socios, usuarios y categorías) también se completó; evidencia en [`10-t12-persistence.md`](./10-t12-persistence.md). Continuar con T-13 (préstamos y concurrencia), después portadas y rutas HTTP; no marcar tareas como completas antes de probarlas.
+El bloque inicial de P4 (autenticación JWT y composición) está verificado en [`08-p4-authentication.md`](./08-p4-authentication.md). T-12 (persistencia PostgreSQL de libros, socios, usuarios y categorías) se completó en [`10-t12-persistence.md`](./10-t12-persistence.md). T-13 (repositorio PostgreSQL de préstamos, testigo de versión y concurrencia real entre procesos) también está verificado en [`11-t13-loans-concurrency.md`](./11-t13-loans-concurrency.md). El siguiente bloque ordenado es T-15 (portadas), antes del resto de rutas HTTP de T-16.

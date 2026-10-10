@@ -7,10 +7,10 @@
 | HU-03 | Gestionar libros | Catalog | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | Libro en DB, cover subido | EN PROCESO |
 | HU-04 | Buscar libros | Catalog | `api`, `app` | Caso de uso con fake; rendimiento/API pendientes | Lista filtrada, <= 300ms | EN PROCESO |
 | HU-05 | Gestionar socios | Members | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | UUID creado, HTTP 201 | EN PROCESO |
-| HU-06 | Prestar libro | Loans | `api`, `app` | Caso de uso con fake; transaccion PostgreSQL pendiente | Líneas descontadas, max 3 | EN PROCESO |
-| HU-07 | Devolver libro | Loans | `api`, `app` | Caso de uso con fake; persistencia pendiente | `returned_at` seteado, +1 copia | EN PROCESO |
-| HU-08 | Ver préstamos | Loans | `api`, `app` | Estado dinamico probado; listado HTTP pendiente | Estados calculados correctos | EN PROCESO |
-| HU-09 | Libros vencidos | Loans | `api`, `app` | Caso de uso con fake; consulta PostgreSQL pendiente | Lista de líneas ordenadas | EN PROCESO |
+| HU-06 | Prestar libro | Loans | `api`, `app` | Caso de uso y transacción/concurrencia PostgreSQL verificados; endpoint HTTP pendiente | Líneas descontadas, max 3 | EN PROCESO |
+| HU-07 | Devolver libro | Loans | `api`, `app` | Persistencia PostgreSQL, reposición única y devolución doble probadas; endpoint HTTP pendiente | `returned_at` seteado, +1 copia | EN PROCESO |
+| HU-08 | Ver préstamos | Loans | `api`, `app` | Estado dinámico y reconstrucción PostgreSQL probados; listado HTTP pendiente | Estados calculados correctos | EN PROCESO |
+| HU-09 | Libros vencidos | Loans | `api`, `app` | Consulta PostgreSQL/días de retraso probados; endpoint HTTP pendiente | Lista de líneas ordenadas | EN PROCESO |
 | HU-10 | Reporte prestados | Reports | `api`, `app` | Puerto/caso de uso con fake; agregacion PostgreSQL pendiente | Lista de libros más prestados | EN PROCESO |
 | T-01 | Esqueleto API | Bootstrap | `api` | GET `/api/v1/health` en Compose | `{"status":"ok"}` | VERIFICADO |
 | T-02 | Migración inicial | Infra/DB | `api`, `infra` | `artisan migrate:status`, consultas PostgreSQL, seis tablas/categorías/FK/CHECK/índices/defaults | Esquema físico coincide | VERIFICADO |
@@ -24,7 +24,7 @@
 | T-10 | PU Return & Overdue | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Devolucion unica y orden de vencidos | VERIFICADO |
 | T-11 | PU Report | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Rango valido y valores congelados en el nucleo | VERIFICADO |
 | T-12 | Repos Persistencia (1) | Adapters | `api` | `PostgresPersistenceAdaptersTest` contra PostgreSQL real; búsquedas, paginación, baja lógica y bindings | CRUD de libro/socio/usuario y categorías | VERIFICADO |
-| T-13 | Repos Persistencia (2) | Adapters | `api` | Integration tests | Concurrency success | PENDIENTE |
+| T-13 | Repos Persistencia (2) | Adapters | `api` | Integración PostgreSQL con dos procesos concurrentes; persistencia, devolución, vencidos, versión obsoleta y rollback | Un préstamo confirmado, conflicto `BOOK_NOT_AVAILABLE`, sin ejemplares ni préstamos parciales | VERIFICADO |
 | T-14 | Adaptador Seguridad | Adapters | `api` | `JwtAuthenticationTest`, `AuthLoginTest` y login HTTP con PostgreSQL | JWT HS256, hash seguro y validación Bearer | VERIFICADO |
 | T-15 | Adaptador Portadas | Adapters | `api` | Integration tests | Disk upload success | PENDIENTE |
 | T-16 | Adaptador HTTP | Adapters | `api` | Feature tests y login HTTP verificados; endpoints de negocio pendientes | Contrato HTTP de autenticación | EN PROCESO |

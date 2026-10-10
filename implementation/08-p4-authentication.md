@@ -29,6 +29,6 @@ Laravel `artisan serve` filtra variables de entorno que no estén en su lista pe
 ## Pendiente
 
 - La interfaz React ya consume el login y muestra un resumen inicial; los módulos de negocio siguen pendientes.
-- Las rutas y adaptadores de negocio restantes siguen pendientes; todavía no hay endpoints protegidos para validar autorización en un flujo HTTP de negocio. El middleware sí está cubierto unitariamente.
+- Las rutas HTTP de negocio siguen pendientes; todavía no hay endpoints protegidos para validar autorización en un flujo HTTP de negocio. El middleware sí está cubierto unitariamente.
 - P2 permanece parcial hasta probar la infraestructura desde un volumen PostgreSQL vacío. No se eliminó el volumen persistente durante esta validación.
-- Continuar con los adaptadores PostgreSQL restantes y las rutas API de las historias HU-02 a HU-10; no inferir concurrencia correcta a partir de pruebas con fakes.
+- Los adaptadores de persistencia de T-12 y T-13 se verificaron posteriormente contra PostgreSQL real; la evidencia de préstamos/concurrencia está en [`11-t13-loans-concurrency.md`](./11-t13-loans-concurrency.md). Continuar con T-15 (portadas) y después los endpoints de negocio de T-16.

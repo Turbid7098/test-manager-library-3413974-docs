@@ -1,8 +1,9 @@
 # Riesgos, Decisiones y Ambigüedades
 
-## A. Concurrencia Optimista vs Modelo de Datos
-**Problema:** ADR-002 especifica control de concurrencia optimista y un "testigo de versión", pero el esquema físico (`data-model.md`) prohíbe añadir columnas nuevas y declara no poseer columnas de auditoría (`updated_at` / `version`).
-**Decisión (ADR-A):** El "testigo de versión" será el campo de negocio `available_copies` mismo u operado de la siguiente manera: La consulta de actualización en base de datos descontará un ejemplar asumiendo que las copias disponibles no han cambiado (ej. `UPDATE book SET available_copies = available_copies - 1 WHERE id = X AND available_copies = Y`). Si las filas afectadas son 0, significa que la versión (el valor) cambió simultáneamente, disparando el código HTTP 409. Esto satisface el contrato sin alterar el esquema físico.
+## A. Concurrencia optimista y modelo de datos
+**Decisión anterior (ADR-A, sustituida):** se propuso usar `available_copies` como testigo para evitar una columna adicional. Esa alternativa no implementaba el testigo de versión explícito exigido por ADR-002.
+
+**Decisión vigente:** ADR-002 es la fuente de verdad. T-13 agrega `book.version bigint NOT NULL`, inicializa en 0 las filas existentes y elimina el valor por defecto después de la migración. Cada actualización compara e incrementa esa versión dentro de la transacción; una lectura obsoleta produce `BOOK_NOT_AVAILABLE` y HTTP 409. `ck_book_available_range` sigue siendo la última barrera de integridad.
 
 ## B. Datos Vencidos (Test Clock)
 **Problema:** T-21 exige generar líneas vencidas mediante la API, pero las fechas de vencimiento están controladas por el Dominio y no pueden forzarse por parámetros HTTP.
