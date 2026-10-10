@@ -50,6 +50,8 @@ Se confirmaron los seis clones locales y que sus `origin` apuntan a los forks de
 
 No se modificaron `app`, `infra`, `page` ni `tool`, pues esos cambios no pertenecen a P3. La auditoria de archivos existente en P0 contiene afirmaciones que deben revisarse contra este inventario; no se alteraron aqui las especificaciones originales.
 
-## Siguiente fase
+## Siguiente paso
 
-P4: implementar adaptadores de persistencia, reloj y seguridad; configurar la composicion; integrar los servicios con las rutas y demostrar los requisitos transaccionales con PostgreSQL.
+Antes de P4 se debe cerrar la compuerta de P2: ejecutar Compose, migraciones PostgreSQL, health y login del administrador inicial con credenciales externas al repositorio. La migracion y Compose existen, pero esa evidencia no se verifico en esta continuacion; ademas, Compose contiene credenciales de demostracion en claro que deben parametrizarse.
+
+Despues de verificar P2, continuar P4 con adaptadores de persistencia, reloj y seguridad; composicion; rutas HTTP y pruebas transaccionales/concurrentes contra PostgreSQL.
