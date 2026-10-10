@@ -2,7 +2,7 @@
 
 | ID | Requisito / Tarea | Módulo | Repositorio | Prueba | Evidencia Esperada | Estado |
 |---|---|---|---|---|---|---|
-| HU-01 | Iniciar sesión | Auth | `api`, `app` | Login HTTP/JWT verificado contra PostgreSQL; interfaz React pendiente | Token JWT o 401 | EN PROCESO |
+| HU-01 | Iniciar sesión | Auth | `api`, `app` | Login HTTP/JWT en PostgreSQL; interfaz React con manejo de error y sesión verificada | Token JWT o 401 | EN PROCESO |
 | HU-02 | Alta bibliotecarios | Auth/Users | `api` | Caso de uso con fake; permisos HTTP pendientes | Usuario creado, HTTP 201 | EN PROCESO |
 | HU-03 | Gestionar libros | Catalog | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | Libro en DB, cover subido | EN PROCESO |
 | HU-04 | Buscar libros | Catalog | `api`, `app` | Caso de uso con fake; rendimiento/API pendientes | Lista filtrada, <= 300ms | EN PROCESO |
@@ -33,5 +33,5 @@
 | T-19 | Arch Tests | Testing | `api` | Dependency test | Architecture respected | PENDIENTE |
 | T-20 | Docker Infra | Infra | `infra` | Compose/API health/DB health verificados; arranque desde volumen limpio pendiente | Containers running, motor inicialmente vacío | EN PROCESO |
 | T-21 | Seed Tool | Tool | `tool` | Script execution | DB populated, 3 overdue | PENDIENTE |
-| T-22 | Frontend App | App | `app` | Manual testing | Full flow | PENDIENTE |
+| T-22 | Frontend App | App | `app` | Build TypeScript/Vite; login, error HTTP, dashboard responsive y logout comprobados | Flujo frontend completo con endpoints de negocio | EN PROCESO |
 | T-23 | Static Page | Page | `page` | Manual testing | Responsive | PENDIENTE |

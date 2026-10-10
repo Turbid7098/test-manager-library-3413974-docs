@@ -42,7 +42,7 @@ Se confirmaron los seis clones locales y que sus `origin` apuntan a los forks de
 | Repositorio | Estado actualizado tras completar el primer bloque de P4 |
 |---|---|
 | `api` | Laravel instalado; migración inicial, health y login HTTP/JWT verificados en PostgreSQL/Compose. Rutas de negocio pendientes. |
-| `app` | Plantilla Vite/TypeScript; aun no es la aplicacion React requerida. |
+| `app` | React + TypeScript: login conectado a la API y panel inicial responsive verificados; faltan módulos y flujos de negocio. |
 | `docs` | Especificaciones Python/.NET originales y documentos de adaptacion; se actualizo la trazabilidad P3. |
 | `infra` | Compose para PostgreSQL 16, API y Vite verificado. Secretos en `.env` local ignorado; falta probar un arranque con volumen PostgreSQL limpio. |
 | `page` | Solo README; falta el sitio estatico. |
