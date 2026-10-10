@@ -28,9 +28,9 @@ Comprobaciones adicionales:
 - `php -l` sobre todo `src/` y `tests/Unit/`: sin errores de sintaxis.
 - Laravel Pint sobre los archivos P3 modificados: 39 archivos aprobados.
 
-## Limites explicitos
+## Limites explícitos al cierre de P3
 
-- No se implementaron ni probaron adaptadores PostgreSQL/Eloquent, rutas HTTP, autenticacion JWT real, composicion Laravel ni Docker Compose integrado.
+- Al cerrar P3 no se habían implementado ni probado adaptadores PostgreSQL/Eloquent, rutas HTTP, autenticación JWT real, composición Laravel ni Docker Compose integrado. El primer bloque P4 verificó después el login y la composición de autenticación.
 - Las pruebas con fakes no verifican atomicidad/concurrencia del motor. RNF-2 y T-13 siguen pendientes.
 - La validacion del contenido binario de una portada corresponde al adaptador `CoverStorage`; su contrato exige deteccion por contenido, y debe probarse en P4.
 - Las historias HU-01 a HU-10 siguen `EN PROCESO` hasta probar sus contratos completos en la API y las capas que correspondan.
@@ -39,12 +39,12 @@ Comprobaciones adicionales:
 
 Se confirmaron los seis clones locales y que sus `origin` apuntan a los forks de `Turbid7098`, no al repositorio del instructor.
 
-| Repositorio | Estado observado al continuar |
+| Repositorio | Estado actualizado tras completar el primer bloque de P4 |
 |---|---|
-| `api` | Laravel instalado; migracion inicial y health verificados en PostgreSQL/Compose. Aprovisionamiento del admin probado; login HTTP y rutas de negocio aun pendientes. |
+| `api` | Laravel instalado; migración inicial, health y login HTTP/JWT verificados en PostgreSQL/Compose. Rutas de negocio pendientes. |
 | `app` | Plantilla Vite/TypeScript; aun no es la aplicacion React requerida. |
 | `docs` | Especificaciones Python/.NET originales y documentos de adaptacion; se actualizo la trazabilidad P3. |
-| `infra` | Compose para PostgreSQL 16, API y Vite verificado. Secretos movidos a `.env` local ignorado; falta probar un arranque con volumen PostgreSQL limpio. |
+| `infra` | Compose para PostgreSQL 16, API y Vite verificado. Secretos en `.env` local ignorado; falta probar un arranque con volumen PostgreSQL limpio. |
 | `page` | Solo README; falta el sitio estatico. |
 | `tool` | Solo README; falta el sembrador por API. |
 
@@ -52,6 +52,6 @@ No se modificaron `app`, `infra`, `page` ni `tool`, pues esos cambios no pertene
 
 ## Siguiente compuerta
 
-P2 esta verificada para Compose, health, esquema y hash del administrador, pero no se debe dar por cerrada: el endpoint HTTP de login todavia no existe y falta verificar un arranque desde un volumen limpio. T-17 permanece `EN PROCESO` y T-20 permanece `EN PROCESO`.
+P2 sigue parcial: Compose, health, esquema, hash del administrador y login HTTP están verificados; falta probar un arranque desde un volumen limpio. T-17 se verificó para la composición de autenticación; T-20 permanece `EN PROCESO`.
 
-El login HTTP forma parte de P4; por tanto, continuar con el primer bloque de P4 (adaptador de autenticacion y composicion) es necesario para validar la ultima evidencia de P2. Mantener las demas rutas P4 y la concurrencia como pendientes hasta probarlas.
+El primer bloque de P4 (adaptador de autenticación, JWT y composición) está verificado; su evidencia está en [`08-p4-authentication.md`](./08-p4-authentication.md). Continuar con los adaptadores y rutas de negocio, las demás tareas P4 y la concurrencia; no marcarlas completas antes de probarlas.

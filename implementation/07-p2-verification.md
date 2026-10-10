@@ -1,6 +1,6 @@
 # P2 — Verificacion de infraestructura, migracion y administrador
 
-**Estado:** parcialmente verificado. Infraestructura en Compose, health y esquema PostgreSQL pasaron; no se marca P2 completa porque aun no existe login HTTP y no se probo un volumen vacio.
+**Estado:** parcialmente verificado. Infraestructura en Compose, health, esquema PostgreSQL y login HTTP del administrador pasaron; P2 no se marca completa porque no se probó un arranque desde un volumen vacío.
 
 ## Cambios aplicados
 
@@ -9,6 +9,7 @@
 - La imagen de API instala `pdo_pgsql` durante el build y Composer se ejecuta si falta `vendor/autoload.php`, en lugar de instalar paquetes del sistema al iniciar cada contenedor.
 - Vite usa `npm ci` cuando no existe `node_modules`.
 - El comando `app:create-admin` devuelve error si faltan variables o si el username ya pertenece a un bibliotecario. Si existe el admin, sincroniza el hash solo si cambió la clave de entorno; nunca imprime la clave o el hash.
+- El servicio API ejecuta `php artisan serve --no-reload`: Laravel filtra variables de entorno al iniciar su servidor de desarrollo si encuentra `.env`; sin esta opción, el proceso HTTP puede caer en SQLite aunque Compose configure PostgreSQL.
 - El README de `infra` documenta el procedimiento PowerShell.
 
 ## Evidencia ejecutada
@@ -17,6 +18,7 @@
 - `docker compose up --build -d`: correcto.
 - PostgreSQL 16 queda healthy; `pg_isready`: acepta conexiones.
 - `GET http://localhost:8000/api/v1/health`: `{"status":"ok"}`.
+- `POST http://localhost:8000/api/v1/auth/login`: autenticación del administrador contra `library.user` en PostgreSQL; se verificó la forma Bearer/JWT, rol `admin` y expiración de ocho horas sin registrar ni mostrar el token.
 - `GET http://localhost:5173`: HTTP 200.
 - `php artisan migrate --force`: sin migraciones pendientes.
 - `php artisan migrate:status`: migración `2026_10_10_000000_create_library_schema` aplicada.
@@ -27,4 +29,4 @@
 
 ## Pendiente antes de cerrar P2
 
-La ruta `/api/v1/auth/login` no está implementada, así que el éxito `ADMIN_AUTH_OK` verifica la contraseña almacenada, no un inicio de sesión HTTP. Implementar y probar el login forma parte del primer bloque P4; también se requiere validar el arranque de una base limpia sin destruir el volumen actual.
+Se requiere validar el arranque de una base limpia. El volumen persistente actual no se eliminó ni se reinicializó; no usar `docker compose down -v` como sustituto de una prueba controlada.
