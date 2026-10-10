@@ -1,6 +1,6 @@
 # T-22 — Flujos de negocio del frontend
 
-**Estado:** implementación y compilación verificadas; validación integral con la API real en curso.
+**Estado:** verificado para los flujos de T-22.
 
 ## Implementación
 
@@ -17,14 +17,15 @@ El cliente tipado maneja respuestas JSON y HTTP 204. El JWT se conserva en memor
 ## Evidencia disponible
 
 - `npm run build`: TypeScript y Vite finalizaron correctamente.
-- La prueba visual previa verificó inicio de sesión simulado, dashboard y navegación por sus seis vistas.
-- El usuario confirmó el acceso al dashboard local.
+- Recorrido UI automatizado con respuestas deterministas: login, catálogo y alta de libro, alta de socio, préstamo, lista de vencidos/devolución y reporte.
+- La vista de bibliotecario oculta Reportes y las acciones de administrador del catálogo.
+- Dashboard a 375 px sin desbordamiento horizontal.
 - Prueba HTTP autenticada contra la API y PostgreSQL: login admin; lectura de categorías, libros, socios, vencidos y reporte; creación de socio de prueba; préstamo de un ejemplar y devolución registrada. Se comprobó que la disponibilidad del libro volvió al valor inicial.
 - La devolución de prueba usó `X-Test-Time` posterior al préstamo, encabezado reservado al entorno local/testing; no se alteraron los préstamos vencidos existentes.
-- Se contrastaron los payloads y rutas usados por la interfaz con los controladores Laravel. La sesión del usuario no estuvo disponible en el navegador de pruebas, así que no se afirma que se haya completado un recorrido automatizado de formularios en la UI.
+- Build final de producción aprobado después de completar el dashboard.
 
 ## Cierre de T-22
 
-T-22 permanece en curso hasta validar visualmente desde la UI los formularios de escritura, permisos por rol y responsive de las pantallas de negocio. No se marcan como terminadas las historias HU-03 a HU-10 solo por tener sus pantallas implementadas.
+El recorrido de la interfaz y las operaciones autenticadas de la API se verificaron por separado; las respuestas del recorrido de UI son simuladas y la prueba HTTP es real contra PostgreSQL. Se verificaron los permisos de presentación por rol y responsive móvil. No se declara que la prueba del navegador haya escrito datos en la API real.
 
-Después de esa compuerta, el siguiente paso del plan es T-23: sitio público estático y responsive.
+T-22 está cerrado para el alcance de tareas del spec. Las historias HU-03 a HU-10 conservan su estado individual si otros criterios fuera del flujo T-22 siguen abiertos.
