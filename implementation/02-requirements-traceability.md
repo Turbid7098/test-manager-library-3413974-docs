@@ -2,27 +2,27 @@
 
 | ID | Requisito / Tarea | Módulo | Repositorio | Prueba | Evidencia Esperada | Estado |
 |---|---|---|---|---|---|---|
-| HU-01 | Iniciar sesión | Auth | `api`, `app` | Test login fake/real | Token JWT o 401 | PENDIENTE |
-| HU-02 | Alta bibliotecarios | Auth/Users | `api` | Test admin rights | Usuario creado, HTTP 201 | PENDIENTE |
-| HU-03 | Gestionar libros | Catalog | `api`, `app` | Test CRUD / portadas | Libro en DB, cover subido | PENDIENTE |
-| HU-04 | Buscar libros | Catalog | `api`, `app` | Test paginación/filtro | Lista filtrada, <= 300ms | PENDIENTE |
-| HU-05 | Gestionar socios | Members | `api`, `app` | Test creación | UUID creado, HTTP 201 | PENDIENTE |
-| HU-06 | Prestar libro | Loans | `api`, `app` | Test reglas negocio | Líneas descontadas, max 3 | PENDIENTE |
-| HU-07 | Devolver libro | Loans | `api`, `app` | Test devolución | `returned_at` seteado, +1 copia | PENDIENTE |
-| HU-08 | Ver préstamos | Loans | `api`, `app` | Test calculo estados | Estados calculados correctos | PENDIENTE |
-| HU-09 | Libros vencidos | Loans | `api`, `app` | Test vencidos | Lista de líneas ordenadas | PENDIENTE |
-| HU-10 | Reporte prestados | Reports | `api`, `app` | Test congelados | Lista de libros más prestados | PENDIENTE |
+| HU-01 | Iniciar sesión | Auth | `api`, `app` | Caso de uso con fake; HTTP/JWT pendientes | Token JWT o 401 | EN PROCESO |
+| HU-02 | Alta bibliotecarios | Auth/Users | `api` | Caso de uso con fake; permisos HTTP pendientes | Usuario creado, HTTP 201 | EN PROCESO |
+| HU-03 | Gestionar libros | Catalog | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | Libro en DB, cover subido | EN PROCESO |
+| HU-04 | Buscar libros | Catalog | `api`, `app` | Caso de uso con fake; rendimiento/API pendientes | Lista filtrada, <= 300ms | EN PROCESO |
+| HU-05 | Gestionar socios | Members | `api`, `app` | Casos de uso con fake; persistencia HTTP pendiente | UUID creado, HTTP 201 | EN PROCESO |
+| HU-06 | Prestar libro | Loans | `api`, `app` | Caso de uso con fake; transaccion PostgreSQL pendiente | Líneas descontadas, max 3 | EN PROCESO |
+| HU-07 | Devolver libro | Loans | `api`, `app` | Caso de uso con fake; persistencia pendiente | `returned_at` seteado, +1 copia | EN PROCESO |
+| HU-08 | Ver préstamos | Loans | `api`, `app` | Estado dinamico probado; listado HTTP pendiente | Estados calculados correctos | EN PROCESO |
+| HU-09 | Libros vencidos | Loans | `api`, `app` | Caso de uso con fake; consulta PostgreSQL pendiente | Lista de líneas ordenadas | EN PROCESO |
+| HU-10 | Reporte prestados | Reports | `api`, `app` | Puerto/caso de uso con fake; agregacion PostgreSQL pendiente | Lista de libros más prestados | EN PROCESO |
 | T-01 | Esqueleto API | Bootstrap | `api` | GET `/health` | `{"status":"ok"}` | PENDIENTE |
 | T-02 | Migración inicial | Infra/DB | `api`, `infra` | Schema inspect | Esquema físico coincide | PENDIENTE |
-| T-03 | Dominio: Value Objects | Domain | `api` | Unit tests | ISBN/Quantity invariants | PENDIENTE |
-| T-04 | Dominio: Book | Domain | `api` | Unit tests | Book invariants | PENDIENTE |
-| T-05 | Dominio: Loan | Domain | `api` | Unit tests | Loan invariants (14 days, max 3) | PENDIENTE |
-| T-06 | Dominio: Member/User | Domain | `api` | Unit tests | Normalization, roles | PENDIENTE |
-| T-07 | PU Auth | App | `api` | App tests (fakes) | Auth success | PENDIENTE |
-| T-08 | PU Books | App | `api` | App tests (fakes) | Books logic success | PENDIENTE |
-| T-09 | PU Lend | App | `api` | App tests (fakes) | Lend process success | PENDIENTE |
-| T-10 | PU Return & Overdue | App | `api` | App tests (fakes) | Return process success | PENDIENTE |
-| T-11 | PU Report | App | `api` | App tests (fakes) | Report logic success | PENDIENTE |
+| T-03 | Dominio: Value Objects | Domain | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | ISBN/Quantity/DateRange invariants | VERIFICADO |
+| T-04 | Dominio: Book | Domain | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Existencias, ajuste y baja logica | VERIFICADO |
+| T-05 | Dominio: Loan | Domain | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Estados, 14 dias, 1-3 lineas y sin duplicados | VERIFICADO |
+| T-06 | Dominio: Member/User | Domain | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Normalizacion, hash y roles | VERIFICADO |
+| T-07 | PU Auth | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Login, clave invalida, alta y rechazo de admin | VERIFICADO |
+| T-08 | PU Books | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | CRUD de dominio, busqueda/paginacion y portadas | VERIFICADO |
+| T-09 | PU Lend | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Limites, vencidos, duplicados y disponibilidad | VERIFICADO |
+| T-10 | PU Return & Overdue | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Devolucion unica y orden de vencidos | VERIFICADO |
+| T-11 | PU Report | App | `api` | `tests/Unit/LendBooksServiceTest.php` con fakes | Rango valido y valores congelados en el nucleo | VERIFICADO |
 | T-12 | Repos Persistencia (1) | Adapters | `api` | Integration tests | DB CRUD success | PENDIENTE |
 | T-13 | Repos Persistencia (2) | Adapters | `api` | Integration tests | Concurrency success | PENDIENTE |
 | T-14 | Adaptador Seguridad | Adapters | `api` | Unit tests | JWT generation, hashing | PENDIENTE |
